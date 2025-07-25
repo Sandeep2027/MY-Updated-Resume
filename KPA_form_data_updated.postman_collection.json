@@ -1,0 +1,90 @@
+{
+  "info": {
+    "name": "KPA_form_data_updated",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"phone\": \"7760873976\", \"password\": \"to_share@123\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Submit Form",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {"key": "name", "value": "John Doe", "type": "text"},
+            {"key": "phone", "value": "7760873976", "type": "text"},
+            {"key": "email", "value": "john.doe@example.com", "type": "text"},
+            {"key": "address", "value": "123 Main St", "type": "text"},
+            {"key": "file", "type": "file", "src": "/path/to/file.pdf"}
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/submitForm",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "submitForm"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Form Data",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/getFormData?page=1&page_size=10",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "getFormData"],
+          "query": [
+            {"key": "page", "value": "1"},
+            {"key": "page_size", "value": "10"}
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
